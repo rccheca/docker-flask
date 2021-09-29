@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block js %}
+<script>
+$('#confirm-delete').on('show.bs.modal', function (event) {
+  console.log('Dentro de la llamado modal');
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('href') // Extract info from data-* attributes
+  // // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.formu').attr('action',recipient)
+  // modal.find('.modal-body input').val(recipient)
+})
+
+// $("a[data-bs-target]").click(function(e){
+//   console.log($(e.target).data('href'));
+//   alert("test");
+// })
+
+
+</script>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="modal" id="confirm-delete" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm Delete</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>You are about to delete one brand, this procedure is irreversible.</p>
+            <p>Do you want to proceed?</p>
+      </div>
+      <div class="modal-footer">
+        <form action="" class="formu">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Understood</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<h1>Brands List</h1>
+
+{% include 'blog/message.html' %}
+
+
+
+  {% if brand_list %}
+  <ul>
+    {% for brand in brand_list %}
+      <li>
+          {{ brand.name }}
+       
+         (<a href="{{ url_for('.forms.update_brand', id=brand.id) }}">Update</a> |
+          <a href="#confirm-delete" data-href="{{ url_for('.forms.delete_brand', id=brand.id) }}" data-bs-toggle="modal" data-bs-target="#confirm-delete" >Delete</a>)
+         
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no brands in the library.</p>
+  {% endif %}
+  <p><a href="{{ url_for('.forms.create_brand') }}">Add a Brand</a></p>
+  <p>
+    <a href="{{ url_for('.car_list') }}">Back to cars</a>
+  </p>
+
+ 
+
+
+{% endblock %}

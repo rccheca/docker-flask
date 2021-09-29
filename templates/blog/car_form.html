@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block js %}
+<script>
+  //$('select option:contains("{{ brand }}")').attr('selected', true);
+  //$("#id_brand").val('2');
+</script>
+{% endblock %}
+
+{% block content %}
+
+
+<h1>{{ 'Edit Car' if edit else 'Add new car' }}</h1>
+  <form action="" method="post">
+    {# csrf_token #}
+    
+	<input type="hidden" name="id" value="{{ form.id }}" >
+	<div class="col-md-4">
+		<label for="name" class="form-label">Nombre</label>
+		<input type="text" name="name" value="{{ form.name }}" class="form-control" required>
+	</div>
+	<div class="col-md-4">
+		<label for="km" class="form-label">km</label>
+		<input type="text" name="km" value="{{ form.km }}" class="form-control" required>
+	</div>
+	<div class="col-md-4">
+		<label for="comments" class="form-label">Comments</label>
+		<input type="text" name="comments" value="{{ form.comment }}" class="form-control" required>
+	</div>
+	<DIV class="col-md-4">
+		<label for="comments" class="form-label">Brand</label>
+		<select class="form-select" name="brand" aria-label="Choose a brand">
+			<option class="md-selected">What brand?</option>
+			{% for brand in brands  %}
+			<option  {% if form.brand_id == brand.id %}selected guay{% endif %} value="{{ brand.id }}">{{ brand.name }}</option>
+			{% endfor %}
+		  </select>
+	</DIV>
+	
+	
+	  
+	  <div style="height: 10px;"></div>
+<div class="col-12">
+    <input type="submit" class="btn btn-primary" value="Submit">
+    <input type="submit" class="btn btn-primary" onclick="window.location='{{ url_for('blog.hello2') }}' ; return false;" value="Cancel">
+</div>
+</form>
+
+
+{% endblock %}

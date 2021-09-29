@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+
+<h1>{{ 'Edit brand' if edit else 'Add new brand' }}</h1>
+  <form action="" method="post">
+
+
+<div class="col-md-4">
+			<input type="hidden" name="id" value="{{ form.id }}" >
+   <input type="text" name="name" value="{{ form.name }}" class="form-control" required>
+</div>
+<div style="height: 10px;"></div>
+<div class="col-12">
+    <input type="submit" value="Submit" class="btn btn-primary">
+    <input type="submit" onclick="window.location='{{ url_for('blog.hello2') }}' ; return false;" value="Cancel" class="btn btn-primary">
+</div>
+  </form>
+{% endblock %}
