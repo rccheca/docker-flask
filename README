@@ -1,1 +1,32 @@
 Flask docker app example
+
+
+Documentation
+
+
+Mysql docker image
+https://hub.docker.com/_/mysql
+
+Mysql python connector
+https://dev.mysql.com/doc/connector-python/en/connector-python-example-cursor-select.html
+
+Mysql connector doc
+https://dev.mysql.com/doc/connector-python/en/connector-python-example-cursor-select.html
+
+
+
+docker entrypoint
+https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
+
+flask quick start
+https://flask.palletsprojects.com/en/2.0.x/quickstart/#a-minimal-application
+
+flask message flashing
+https://flask.palletsprojects.com/en/2.0.x/patterns/flashing/
+
+DB in flask
+https://flask.palletsprojects.com/en/2.0.x/patterns/sqlite3/
+
+
+Example create a simple app in flask and docker
+https://robertoprevato.github.io/How-to-run-PyPy-powered-web-apps-in-Docker/
